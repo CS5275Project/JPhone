@@ -251,6 +251,7 @@ public class JPhoneStatus extends Thread {
 					 * 2) PHONE_STATUS_SESSION                                       *
 					 * 3) PHONE_STATUS_ERROR                                         *
 					 *****************************************************************/
+			/* ***Add by Nelson ****Start */
 					switch (status) {
 					case PHONE_STATUS_IDLE: 
 						 System.out.println(IDLE_MSG);
@@ -268,8 +269,8 @@ public class JPhoneStatus extends Thread {
 						System.out.println("Error");
 						System.exit(1);							
 					}
-					 
-					
+					System.out.flush();
+		/**** Add by Nelson *** End**/			
 				}
 				else if(handshakeMsg.equals(HANDSHAKE_START)) // if the message is an incoming call request
 				{
