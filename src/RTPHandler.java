@@ -7,7 +7,7 @@ import jlibrtp.*;
 
 /**
  * this class sends out audio data to participants
- * @author terry
+ * @author terry modified by Nelson
  *
  */
 public class RTPHandler implements RTPAppIntf {
@@ -77,10 +77,11 @@ public class RTPHandler implements RTPAppIntf {
 		 * Set the naivePktReception to be true;                         *
 		 * Register the RTP session.                                     *
 		 *****************************************************************/
+/**** Nelson Code Add by Nelson** Start */		
 		m_rtpReceiveSession = new RTPSession(rtpReceiverSocket, rtcpReceiverSocket);
 		m_rtpReceiveSession.naivePktReception(true);
-		RTPAppIntf.RTPSessionRegister(m_rtpReceiveSession, null, null);
-		
+		m_rtpReceiveSession.RTPSessionRegister(this, null, null);
+/**** Nelson Code Add by Nelson** End */			
 		//Send Session 
 		
 		DatagramSocket rtpSenderSocket = null;
@@ -104,9 +105,10 @@ public class RTPHandler implements RTPAppIntf {
 		 * Initialize a RTP send session RTPSession;                     *
 		 * Register the RTP session.                                     *
 		 *****************************************************************/
+/**** Nelson Code Add by Nelson***/	
 			m_rtpSendSession = new RTPSession(rtpSenderSocket, rtcpSenderSocket);	
-			RTPAppIntf.RTPSessionRegister(m_rtpSendSession, null, null);
-			
+			m_rtpSendSession.RTPSessionRegister(this, null, null);
+/**** Nelson Code Add by Nelson***/				
 		System.out.println("Send to " + m_recevierIPAddr + " " + rtpSenderPort + " " + rtcpSenderPort);
 		m_rtpSendSession.addParticipant(new Participant(m_recevierIPAddr, rtpSenderPort, rtcpSenderPort));
 		
@@ -163,7 +165,9 @@ public class RTPHandler implements RTPAppIntf {
 		 * End the RTP send session;                                     *
 		 * End the RTP receive session.                                  *
 		 *****************************************************************/
+/**** Nelson Code Add by Nelson***/	
 		m_rtpReceiveSession.endSession();
-		m_rtpSendSession.endsession();
+		m_rtpSendSession.endSession();
+/**** Nelson Code Add by Nelson***/	
 	}
 }
