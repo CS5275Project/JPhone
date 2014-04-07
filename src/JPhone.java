@@ -16,6 +16,11 @@ import javax.swing.*;
  */
 public class JPhone extends JFrame implements ActionListener, WindowListener
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;  // to suppress warning
+
 	public static final int RTP_PORT = 15000;
 	
 	/**
@@ -132,14 +137,14 @@ public class JPhone extends JFrame implements ActionListener, WindowListener
 
 		// create the GUI
 		participantIPAddr = new JTextField();
-		participantIPAddr.setColumns(10);
-		participantIPAddr.setText("192.168.0.x");
+		participantIPAddr.setColumns(20);
+		participantIPAddr.setText("You need to add your IP address 1st!");
 
-		addButton = new JButton("+");
+		addButton = new JButton("Add");
 		addButton.setActionCommand(COMMAND_ADD);
 		addButton.addActionListener(this);
 		
-		removeButton = new JButton("-");
+		removeButton = new JButton("Remove");
 		removeButton.setActionCommand(COMMAND_REMOVE);
 		removeButton.addActionListener(this);
 
